@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "description": "Новый вопрос 1",
+    "test_id": "1",
+    "type": "one_ans",
+    "order": 1
+  },
+  {
+    "id": 2,
+    "description": "Новый вопрос 2",
+    "test_id": "1",
+    "type": "many_ans",
+    "order": 2
+  },
+  {
+    "id": 3,
+    "description": "Новый вопрос 3",
+    "test_id": "1",
+    "type": "text_ans",
+    "order": 3
+  },
+  {
+    "id": 4,
+    "description": "Новый вопрос 4",
+    "test_id": "2",
+    "type": "many_ans",
+    "order": 1
+  }
+]

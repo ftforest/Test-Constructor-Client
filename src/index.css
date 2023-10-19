@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* CreateTest */
+.create-test-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+/* ListTestsPage */
+.block {
+  margin: 20px;
+}
+.wrap-icon-edit {
+  display: flex;
+  justify-content: space-between;
+}
+.icon-edit {
+  min-width: 20px;
+  min-height: 10px;
+  background: #fff000;
+}
+
+.icon-edit {
+  fill: black;
+  font-size: 20px;
+}
+.icon-edit:hover {
+  fill: #c2c2c9;
+  font-size: 20px;
+}
+/* ListQuestions */
+.list-questions {
+  list-style: none;
+  padding-left: 0;
+}
+/* TestTitle */
+.test-title {
+  width: 100%;
+  padding: 0 20px;
+}
+.test-title input {
+  width: 100%;
+  border-radius: 5px;
+}
+/* CardOneTest */
+.card-one-test {
+  background: #fff1b7;
+  padding:20px;
+  border-radius: 20px;
+  margin: 20px auto;
+}
+.card-one-test_title-block {
+  display: flex;
+  width: 100%;
+  padding:20px;
+  background: #f8ebcf;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  vertical-align: center;
+}
+.card-one-test_num {
+  margin: auto;
+  font-size: 18px;
+}
+.card-one-test_close-icon {
+display: inline-block;
+}
+.card-one-test_close-icon:hover {
+  color: #e21d1d;
+}
+.card-one-test_edit-icon:hover {
+  color: #418021;
+}
+
+.card-one-test_title-question {
+  display: flex;
+  justify-content: space-between;
+  flex-basis: 100%;
+  margin: auto;
+  font-size: 18px;
+}
+.card-one-test_action {
+  display: flex;
+  align-items: center;
+}
+.card-one-test_list-answers {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.card-one-test_list-answers-ul {
+  padding:20px;
+}
+.card-one-test_answer-add {
+  display: flex;
+}
+.card-one-test_answer-add input {
+  width: 80%;
+}
+.card-one-test_answer-add button {
+  width: 20%;
+}

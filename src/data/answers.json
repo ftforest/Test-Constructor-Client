@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "value": "Ответ 1",
+    "correct": true,
+    "question_id": 1
+  },
+  {
+    "id": 2,
+    "value": "Ответ 2",
+    "correct": false,
+    "question_id": 1
+  },
+  {
+    "id": 3,
+    "value": "Ответ 3",
+    "correct": false,
+    "question_id": 1
+  },
+  {
+    "id": 4,
+    "value": "Ответ 4",
+    "correct": true,
+    "question_id": 4
+  },
+  {
+    "id": 5,
+    "value": "Ответ 5",
+    "correct": false,
+    "question_id": 4
+  },
+  {
+    "id": 6,
+    "value": "Ответ 6",
+    "correct": false,
+    "question_id": 4
+  }
+]

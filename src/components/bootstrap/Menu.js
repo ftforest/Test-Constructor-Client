@@ -1,0 +1,37 @@
+import {React} from 'react';
+import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
+import {useStates} from "./StateProvider";
+
+
+function Menu(props) {
+    const {states, LogoutApp} = useStates();
+    var storedAccess = null;
+    if (localStorage.getItem('access')) {
+        storedAccess = localStorage.getItem('access');
+    }
+    let menu = '';
+    if (states.access || storedAccess) {
+        menu = <NavDropdown title="Account" id="basic-nav-dropdown">
+                    <NavDropdown.Item href="/my-tests">Мои тесты</NavDropdown.Item>
+                    <NavDropdown.Item href="/complited-tests">Завершенные</NavDropdown.Item>
+                    <NavDropdown.Item href="/profile">Профиль</NavDropdown.Item>
+                    <NavDropdown.Divider/>
+                    <NavDropdown.Item href="/exit" onClick={LogoutApp}>Выход</NavDropdown.Item>
+                </NavDropdown>
+    }
+    return (
+        <Navbar bg="light" expand="lg">
+            <Container>
+                <Navbar.Brand href="/">Tests Creater</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        {menu}
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
+}
+
+export default Menu;

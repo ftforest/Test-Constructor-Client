@@ -6,15 +6,16 @@ import { StateProvider } from "./components/bootstrap/StateProvider"
 import Routery from "./RouterList";
 import Menu from "./components/bootstrap/Menu";
 import "./index.css"
+import QuestionProvider from "./hooks/question-hooks";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <StateProvider>
-          <Menu/>
-        <Routery/>
-      </StateProvider>
+          <StateProvider>
+              <Menu/>
+              <Routery/>
+          </StateProvider>
   </React.StrictMode>
 );
 

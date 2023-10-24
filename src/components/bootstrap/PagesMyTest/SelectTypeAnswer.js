@@ -1,6 +1,7 @@
 import React from 'react';
 import {Form} from "react-bootstrap";
 import {useStates} from "../StateProvider";
+import {useQuestions} from "../../../hooks/question-hooks";
 import {
     storeEditElement, storeEditElements, storeGetElementsForParam,
     storeGetObjectById,
@@ -9,6 +10,7 @@ import {
     storeSetElementForParam
 } from "../../../functions/storege";
 import {print} from "../../../functions/helpers";
+import {useAnswers} from "../../../hooks/answer-hooks";
 
 function SelectTypeAnswer(props) {
     const question = props.question;
@@ -16,7 +18,9 @@ function SelectTypeAnswer(props) {
     const question_type = question.type;
     const test_id = question.test_id;
     let textInput = React.createRef();
-    const {editQuestion,addAnswers} = useStates();
+    const {addAnswers} = useStates();
+    const {editQuestion} = useQuestions();
+    const {refrashAnswers} = useAnswers();
     function onChangTypeAnswer(question_id,e) {
         //
         let question = storeGetObjectById("questions",question_id);
@@ -29,8 +33,9 @@ function SelectTypeAnswer(props) {
         };
         //
         //
+        console.log(refrashAnswers,'refrashAnswers 2')
+        editQuestion(questionElement,refrashAnswers,e);
 
-        editQuestion(questionElement,e);
     }
     return (
         <>

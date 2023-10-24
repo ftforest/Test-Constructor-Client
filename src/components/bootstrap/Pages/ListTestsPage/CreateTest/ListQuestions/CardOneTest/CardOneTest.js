@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Form} from "react-bootstrap";
-import {useStates} from "./../StateProvider";
-import SelectTypeAnswer from "./SelectTypeAnswer";
+import {useStates} from "../../../../../StateProvider";
+import SelectTypeAnswer from "../../../../../PagesMyTest/SelectTypeAnswer";
 import {
     storeDeleteElement,
     storeDeleteElementsForParam, storeGetElementsForParam,
     storeGetParam,
     storeSaveReWtite
-} from "../../../functions/storege";
-import RadioButtonsAnimalsAdaptive from "../../examples/RadioButtonsAnimalsAdaptive";
+} from "../../../../../../../functions/storege";
+import RadioButtonsAnimalsAdaptive from "../../../../../../examples/RadioButtonsAnimalsAdaptive";
 import {FaAlignCenter, FaTrashAlt, FaUserEdit} from "react-icons/fa";
+import {useQuestions} from "../../../../../../../hooks/question-hooks";
+import {useAnswers} from "../../../../../../../hooks/answer-hooks";
 
 function CardOneTest(props) {
     let list_answers = '';
@@ -31,7 +33,9 @@ function CardOneTest(props) {
         
         list_answers = listAnswers(question);
     },[isCheckeds]);*/
-    const {editQuestion,refrashAnswers,addAnswers,saveTextAnswers, onChangeAnswerRight,refrashQuestions} = useStates();
+    const {addAnswers,saveTextAnswers, onChangeAnswerRight} = useStates();
+    const {refrashQuestions} = useQuestions();
+    const {refrashAnswers} = useAnswers();
 
     //
     function handleOnChangeCheckBox(answer,question,event) {
@@ -180,6 +184,7 @@ function CardOneTest(props) {
                     <FaUserEdit className="card-one-test_edit-icon" onClick={(e)=> editTitleQuestions(e)}/>
                 </div>
             </div>
+
             <SelectTypeAnswer test_id={test_id} question={question}/>
             <ul className="card-one-test_list-answers-ul">
                 {list_answers}

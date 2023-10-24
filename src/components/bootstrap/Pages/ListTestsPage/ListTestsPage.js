@@ -1,39 +1,51 @@
 import {Col, Container, Row, Table} from "react-bootstrap";
-import React, {useState} from "react";
-import {useStates} from "./StateProvider";
-import Title from "./Title";
+import React, {useState, useEffect } from "react";
+import {useStates} from "../../StateProvider";
+import axiosInstance from '../../../../data/axiosConfig';
+import Title from "../../Title";
 import { FaTrashAlt,FaUserEdit } from "react-icons/fa";
-import {
-    storageAddGet,
-    storeDeleteElementsForParam,
-    storeGetElementsForParam,
-    storeGetParam
-} from "../../functions/storege";
-import {print} from "../../functions/helpers";
+import {storageAddGet, storeDeleteElementsForParam, storeGetParam} from "../../../../functions/storege";
+import {print} from "../../../../functions/helpers";
+import AnswerProvider from "../../../../hooks/answer-hooks";
+import QuestionProvider from "../../../../hooks/question-hooks";
 
-function ListTestsComplitePage(props) {
+function ListTestsPage(props) {
     let title = "My Tests";
     let btnName = "Create test";
-    const {updateTests} = useStates();
-    const tests = storeGetParam('completed_tests');
-    console.log(tests,"tests");
-    const testTable = tests.map(item => {
-        let test_title = storeGetElementsForParam("tests","id",item.test_id)[0].title;
-        console.log(test_title,"test_title");
-        let result = item.right + "/" + (parseInt(item.right) + parseInt(item.wrong))
-        let date_now = new Date();
-        let test_result = {
-            "id": item.id,
-            "user_id": "1",
-            "test_id": item.test_id,
-            "test_title": test_title,
-            "right": item.right,
-            "wrong": item.wrong,
-            "test_result": result,
-            "created_at": date_now.getDate()+"."+(date_now.getMonth()+1)+"."+date_now.getFullYear()
-        };
-        return test_result;
-    });
+    let [hover,setHover] = useState();
+    let [tests, setTests] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const {updateTests, baseURL} = useStates();
+
+    const fetchProtectedData = async () => {
+        try {
+            const response = await axiosInstance.get(`${baseURL}/tests/tests`);
+            console.log(response.data,"zzzzzzzz");
+            print(response.data,"xxxxxxxx");
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        let val = localStorage.getItem('getDataTable');
+        console.log(val,'val');
+        console.log(typeof val,'val');
+        if (val == 'local_storage') {
+            setTests(storeGetParam('tests'));
+            setIsLoading(false);
+        } else if (val == 'data_base') {
+            fetchProtectedData().then(data => {
+                setTests(data);
+                setIsLoading(false);
+            })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    }, []);
+
     //
     const CreateTestF = (e) => {
         e.preventDefault();
@@ -58,6 +70,10 @@ function ListTestsComplitePage(props) {
         }*/
     }
 
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <Container>
             <Row>
@@ -74,18 +90,18 @@ function ListTestsComplitePage(props) {
                         <thead>
                         <tr>
                             <th>Title Test</th>
-                            <th>Date Complited</th>
-                            <th>Resalt</th>
+                            <th>Date Create</th>
+                            <th>Count Users</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {testTable.map((test,idx) => {
+                        {tests.map((test,idx) => {
                             return (
                                 <tr key={idx}>
-                                    <td>{test.test_title}</td>
+                                    <td>{test.title}</td>
                                     <td>{test.created_at}</td>
-                                    <td>{test.test_result}</td>
+                                    <td>{test.author_id}</td>
                                     <td>
                                         <div className={'wrap-icon-edit'}>
                                                 <FaUserEdit
@@ -108,4 +124,4 @@ function ListTestsComplitePage(props) {
     );
 }
 
-export default ListTestsComplitePage;
+export default ListTestsPage;

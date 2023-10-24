@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+            import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import {
     storeAddElement,
@@ -13,11 +13,12 @@ import {
 } from '../../functions/storege';
 import { print } from '../../functions/helpers';
 import stateApp from './../../data/state-app.json';
-import questions_bd from './../../data/questions.json';
+//import questions_bd from './../../data/questions.json';
 import answers_bd from './../../data/answers.json';
 import tests_bd from './../../data/my-tests.json';
 import users_bd from './../../data/users.json';
 import compliter_tests_bd from './../../data/completed_test.json';
+import {useQuestions} from "../../hooks/question-hooks";
 
 const StateContext = createContext();
 export const useStates = () => useContext(StateContext);
@@ -26,7 +27,9 @@ export function StateProvider({ children }) {
     ////
     const baseURL = 'http://localhost:3001'; // Замените на ваш базовый URL
 
-    const [questions, setQuestions] = useState(questions_bd);
+    //const [questions, setQuestions] = useState(questions_bd);
+    const [updateApp,setUpdateApp] = useState(0);
+    const {questions} = useQuestions();
     const [answers, setAnswers] = useState(answers_bd);
     const [tests, setTests] = useState(tests_bd);
     const [users, setUsers] = useState(users_bd);
@@ -40,20 +43,20 @@ export function StateProvider({ children }) {
         "answear": "one_ans"
     }]);
 
-    const refrashQuestions = (data) => {
+    /*const refrashQuestions = (data) => {
         setQuestions(data);
-    }
+    }*/
     const refrashAnswers = (data) => {
         setAnswers(data);
     }
     const refrashUsers = (data) => {
         setUsers(data);
     }
-    const addQuestions = (quest,e) => {
+    /*const addQuestions = (quest,e) => {
         e.preventDefault();
         setQuestions([...questions, quest]);
         storeAddElement('questions',quest)
-    }
+    }*/
     const updateTests = (data) => {
         setTests(data);
     }
@@ -71,7 +74,7 @@ export function StateProvider({ children }) {
             setAnswers(data);
         }
     }
-    const editQuestion = (questionElement,e) => {
+    /*const editQuestion = (questionElement,e) => {
         e.preventDefault();
         let data;
         let els_answers = storeGetElementsForParam("answers","question_id",questionElement.id);
@@ -88,7 +91,7 @@ export function StateProvider({ children }) {
         }
         data = storeUpdateElementFields('questions',questionElement)
         refrashQuestions(data);
-    }
+    }*/
     const addAnswers = (answer,e) => {
         let data = storeSetElementForParam('answers',"question_id",answer.question_id,"correct",false);
         print(data,'StateProvider->addAnswers');
@@ -241,9 +244,9 @@ export function StateProvider({ children }) {
                 newQuestion,
                 setNewQuestion,
                 AddQuestion,
-                questions,
-                addQuestions,
-                editQuestion,
+                //questions,
+                //addQuestions,
+                //editQuestion,
                 answers,
                 addAnswers,
                 saveTextAnswers,
@@ -252,13 +255,15 @@ export function StateProvider({ children }) {
                 getTest,
                 getAllTests,
                 onChangeAnswerRight,
-                refrashQuestions,
+                //refrashQuestions,
                 updateTests,
                 refrashAnswers,
                 users,
                 refrashUsers,
                 handleLogin,
                 baseURL,
+                updateApp,
+                setUpdateApp
             }}
         >
             {children}

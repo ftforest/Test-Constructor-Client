@@ -2,11 +2,13 @@ import React from 'react';
 import {Form} from "react-bootstrap";
 import {useStates} from "./../StateProvider";
 import SelectTypeAnswer from "./SelectTypeAnswer";
+import {useQuestions} from "../../../hooks/question-hooks";
 
 function AddQuestionOneTest(props) {
     const btnName = "Add questions";
     const test_id = props.test_id;
-    const {addTest,addQuestions,questions} = useStates();
+    const {addTest} = useStates();
+    const {questions,addQuestions} = useQuestions();
     let questionText = React.createRef();
 
     function handleClick(test_id,e) {

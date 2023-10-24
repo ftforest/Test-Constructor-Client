@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
-import CardOneTest from "./CardOneTest";
-import AddQuestionOneTest from "./AddQuestionOneTest";
-import SaveTestBtn from "./SaveTestBtn";
-import TestTitle from "./TestTitle";
+import React, {useEffect, useState} from 'react';
+import CardOneTest from "./CardOneTest/CardOneTest";
+import AddQuestionOneTest from "../../../../PagesMyTest/AddQuestionOneTest";
+import SaveTestBtn from "../../../../PagesMyTest/SaveTestBtn";
+import TestTitle from "../../../../PagesMyTest/TestTitle";
 import {
     storeEditElements,
     storeGetElementsForParam,
     storeGetObjectById,
     storeGetParam
-} from "../../../functions/storege";
-import {print} from "../../../functions/helpers";
-import {useStates} from "../StateProvider";
+} from "../../../../../../functions/storege";
+import {print} from "../../../../../../functions/helpers";
+import {useStates} from "../../../../StateProvider";
+import QuestionProvider, {useQuestions} from "../../../../../../hooks/question-hooks";
 
 function ListQuestions(props) {
 
@@ -19,11 +20,12 @@ function ListQuestions(props) {
 
     //const array_questions =  props.questions;
     //const array_answers =  props.answers;
-    const {refrashQuestions} = useStates();
+    //const {refrashQuestions} = useStates();
+    const {refrashQuestions} = useQuestions();
     let test_id = props.test_id;
     if (test_id == null) test_id = 0;
-    const array_questions =  storeGetParam('questions');
-    const array_answers =  storeGetParam('answers');
+    let array_questions =  storeGetParam('questions');
+    let array_answers =  storeGetParam('answers');
     const tests = storeGetParam('tests').filter(item => item.id == test_id)[0];
     
     let test_title = '';
@@ -125,9 +127,11 @@ function ListQuestions(props) {
         return (
             <>
                 <TestTitle test_title={test_title} onChange={handleChange}/>
-                <ul className="list-questions">
-                    {list}
-                </ul>
+                <QuestionProvider>
+                    <ul className="list-questions">
+                        {list}
+                    </ul>
+                </QuestionProvider>
                 <AddQuestionOneTest test_id={test_id}/>
                 <SaveTestBtn test_id={test_id} nameTest={nameTest} questions={array_questions} answers={array_answers}/>
             </>

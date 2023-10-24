@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateTest from "../bootstrap/PagesMyTest/CreateTest";
+import CreateTest from "../bootstrap/Pages/ListTestsPage/CreateTest/CreateTest";
 
 class Reservation extends React.Component {
     constructor(props) {

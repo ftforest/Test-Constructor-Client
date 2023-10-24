@@ -214,7 +214,7 @@ export function StateProvider({ children }) {
                 storeSaveReWtite('completed_tests',completedTests);
                 storeSaveReWtite('questions',questions);
                 storeSaveReWtite('answers',answers);
-                window.location.href = '/my-tests';
+                window.location.href = '/my-tests-page';
             }
         }
     }

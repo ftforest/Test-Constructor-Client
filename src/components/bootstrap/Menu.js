@@ -16,6 +16,8 @@ function Menu(props) {
                     <NavDropdown.Item href="/complited-tests">Завершенные</NavDropdown.Item>
                     <NavDropdown.Item href="/profile">Профиль</NavDropdown.Item>
                     <NavDropdown.Divider/>
+                    <NavDropdown.Item href="/my-tests-page">Страница Мои тесты</NavDropdown.Item>
+                    <NavDropdown.Item href="/complited-tests-page">Страница Завершенные тесты</NavDropdown.Item>
                     <NavDropdown.Item href="/exit" onClick={LogoutApp}>Выход</NavDropdown.Item>
                 </NavDropdown>
     }

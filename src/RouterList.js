@@ -4,6 +4,9 @@ import ErrorPage from "./components/bootstrap/ErrorPage";
 import ListTestsPage from "./components/bootstrap/ListTestsPage";
 import CreateTest from "./components/bootstrap/PagesMyTest/CreateTest";
 import ListTestsComplitePage from "./components/bootstrap/ListTestsComplitePage";
+import MyTestsPage from "./Pages/MyTestsPage/MyTestsPage";
+import ComplitedTestsPage from "./Pages/ComplitedTestsPage/ComplitedTestsPage";
+import EditTestsPage from "./Pages/EditTestsPage/EditTestsPage";
 
 const Routery = () => {
     return (
@@ -13,6 +16,13 @@ const Routery = () => {
                     <Route path='my-tests' element={<ListTestsPage/>} errorElement={<ErrorPage/>}/>
                     <Route path='complited-tests' element={<ListTestsComplitePage/>} errorElement={<ErrorPage/>}/>
                     <Route path='create-test/:id' element={<CreateTest/>} errorElement={<ErrorPage/>}/>
+
+                    <Route path='my-tests-page' element={<MyTestsPage/>} errorElement={<ErrorPage/>}/>
+                    <Route path='complited-tests-page' element={<ComplitedTestsPage/>} errorElement={<ErrorPage/>}/>
+
+                    <Route path='action-test/create/:id' element={<EditTestsPage/>} errorElement={<ErrorPage/>}/>
+                    <Route path='action-test/edit/:id' element={<EditTestsPage/>} errorElement={<ErrorPage/>}/>
+                    <Route path='action-test/delete/:id' element={<EditTestsPage/>} errorElement={<ErrorPage/>}/>
                 </Routes>
         </BrowserRouter>
     );

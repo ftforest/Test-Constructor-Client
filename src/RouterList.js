@@ -7,6 +7,7 @@ import ListTestsComplitePage from "./components/bootstrap/ListTestsComplitePage"
 import MyTestsPage from "./Pages/MyTestsPage/MyTestsPage";
 import ComplitedTestsPage from "./Pages/ComplitedTestsPage/ComplitedTestsPage";
 import EditTestsPage from "./Pages/EditTestsPage/EditTestsPage";
+import TestProvider from "./hooks/test-hook";
 
 const Routery = () => {
     return (
@@ -17,7 +18,7 @@ const Routery = () => {
                     <Route path='complited-tests' element={<ListTestsComplitePage/>} errorElement={<ErrorPage/>}/>
                     <Route path='create-test/:id' element={<CreateTest/>} errorElement={<ErrorPage/>}/>
 
-                    <Route path='my-tests-page' element={<MyTestsPage/>} errorElement={<ErrorPage/>}/>
+                    <Route path='my-tests-page' element={<TestProvider><MyTestsPage/></TestProvider>} errorElement={<ErrorPage/>}/>
                     <Route path='complited-tests-page' element={<ComplitedTestsPage/>} errorElement={<ErrorPage/>}/>
 
                     <Route path='action-test/create/:id' element={<EditTestsPage/>} errorElement={<ErrorPage/>}/>

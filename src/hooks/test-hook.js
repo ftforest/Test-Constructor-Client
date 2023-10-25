@@ -15,6 +15,9 @@ export default function TestProvider({ children }) {
     function TestDelete(id,e) {
         console.log('TestDelete')
         console.log(id,'id')
+
+        let data = tests.filter(item => item.id != id);
+        setTests(data);
     }
 
     function TestView(id,e) {

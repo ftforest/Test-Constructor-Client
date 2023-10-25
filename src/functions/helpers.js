@@ -40,3 +40,17 @@ export function addCaptionsObjOrArrayTwoDimensional(objOrArray) {
     }
     return captionsName
 }
+
+export function ViewObject (obj,debugT = 'Debug',i = 0) {
+    const result = []
+    Object.keys(obj).forEach((key, index) => result.push(<li key={index}>{key} : {obj[key]} </li>))
+
+    return (
+        <div key={i}>
+            <span>{debugT}:</span>
+            <ul>
+                {result}
+            </ul>
+        </div>
+    )
+}

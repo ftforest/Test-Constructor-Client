@@ -1,7 +1,7 @@
 import React from 'react';
 import TableComponent from "../../Components/TableComponent/TableComponent";
 import {useTests} from "../../hooks/test-hook";
-import {addCaptionsObjOrArray, addCaptionsObjOrArrayTwoDimensional, isObject} from "../../functions/helpers";
+import {addCaptionsObjOrArrayTwoDimensional} from "../../functions/helpers";
 
 function MyTestsPage(props) {
     let table = [
@@ -14,9 +14,6 @@ function MyTestsPage(props) {
     ]
     const {tests, TestEdit, TestDelete, TestView} = useTests();
     table = tests;
-    let captionsName = []
-    captionsName = addCaptionsObjOrArrayTwoDimensional(table)
-    table = [captionsName].concat(table)
 
     return (
         <div>

@@ -1,9 +1,9 @@
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import App2 from "./App2";
-import ErrorPage from "./components/bootstrap/ErrorPage";
-import ListTestsPage from "./components/bootstrap/ListTestsPage";
-import CreateTest from "./components/bootstrap/PagesMyTest/CreateTest";
-import ListTestsComplitePage from "./components/bootstrap/ListTestsComplitePage";
+import ErrorPage from "./Components/bootstrap/ErrorPage";
+import ListTestsPage from "./Components/bootstrap/ListTestsPage";
+import CreateTest from "./Components/bootstrap/PagesMyTest/CreateTest";
+import ListTestsComplitePage from "./Components/bootstrap/ListTestsComplitePage";
 import MyTestsPage from "./Pages/MyTestsPage/MyTestsPage";
 import ComplitedTestsPage from "./Pages/ComplitedTestsPage/ComplitedTestsPage";
 import EditTestsPage from "./Pages/EditTestsPage/EditTestsPage";

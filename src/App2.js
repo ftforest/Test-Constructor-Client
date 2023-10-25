@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AuthPage from "./components/bootstrap/AuthPage";
-import {useStates} from "./components/bootstrap/StateProvider";
+import AuthPage from "./Components/bootstrap/AuthPage";
+import {useStates} from "./Components/bootstrap/StateProvider";
 import {scream,scream2} from "./JavaScriptVanilla/2023_07_07_001_fn_is_var__fn_scream";
 
 function App2(props) {

@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { StateProvider } from "./components/bootstrap/StateProvider"
+import { StateProvider } from "./Components/bootstrap/StateProvider"
 import Routery from "./RouterList";
-import Menu from "./components/bootstrap/Menu";
+import Menu from "./Components/bootstrap/Menu";
 import "./index.css"
 
 

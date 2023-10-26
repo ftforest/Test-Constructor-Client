@@ -8,6 +8,19 @@ export default function QuestionProvider({ children }) {
     const [questions, setQuestions] = useState(questionsData);
     const NameElement = 'question'
 
+    const structure = {
+        'id': '',
+        'description': '',
+        'test_id': '',
+        'type': '',
+        'order': ''
+    }
+
+    function QuestionSave(el) {
+        console.log('QuestionSave')
+        setQuestions([...questions,el])
+    }
+
     function QuestionEdit(id,e) {
         console.log('QuestionEdit')
         console.log(id,'id')
@@ -39,7 +52,7 @@ export default function QuestionProvider({ children }) {
     }
 
     return (
-        <QuestionContext.Provider value={{ questions, QuestionEdit, QuestionDelete, QuestionView, QuestionGetId,QuestionGetTestId, NameElement }}>
+        <QuestionContext.Provider value={{ questions, QuestionEdit, QuestionDelete, QuestionView, QuestionGetId,QuestionGetTestId, NameElement, structure, QuestionSave }}>
             {children}
         </QuestionContext.Provider>
     );

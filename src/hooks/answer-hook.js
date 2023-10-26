@@ -8,6 +8,18 @@ export default function AnswerProvider({ children }) {
     const [answers, setAnswers] = useState(answersData);
     const NameElement = 'answer'
 
+    const structure = {
+        'id': '',
+        'value': '',
+        'correct': '',
+        'question_id': ''
+    }
+
+    function AnswerSave(el) {
+        console.log('AnswerSave')
+        setAnswers([...answers,el])
+    }
+
     function AnswerEdit(id,e) {
         console.log('AnswerEdit')
         console.log(id,'id')
@@ -39,7 +51,7 @@ export default function AnswerProvider({ children }) {
     }
 
     return (
-        <AnswerContext.Provider value={{ answers, AnswerEdit, AnswerDelete, AnswerView, AnswerGetId,AnswerGetQuestionId, NameElement }}>
+        <AnswerContext.Provider value={{ answers, AnswerEdit, AnswerDelete, AnswerView, AnswerGetId,AnswerGetQuestionId, NameElement, structure, AnswerSave }}>
             {children}
         </AnswerContext.Provider>
     );

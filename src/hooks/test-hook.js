@@ -9,6 +9,18 @@ export default function TestProvider({ children }) {
     const [tests, setTests] = useState(testsData);
     const NameElement = 'test'
 
+    const structure = {
+        'id': '',
+        'title': '',
+        'author_id': '',
+        'created_at': ''
+    }
+
+    function TestSave(el) {
+        console.log('TestSave')
+        setTests([...tests,el])
+    }
+
     function TestEdit(id,e) {
         console.log('TestEdit')
         console.log(id,'id')
@@ -35,7 +47,7 @@ export default function TestProvider({ children }) {
     }
 
     return (
-        <TestContext.Provider value={{ NameElement, tests, TestEdit, TestDelete, TestView, TestGetId }}>
+        <TestContext.Provider value={{ NameElement, tests, TestEdit, TestDelete, TestView, TestGetId, structure, TestSave }}>
             {children}
         </TestContext.Provider>
     );

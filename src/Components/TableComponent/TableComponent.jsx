@@ -2,7 +2,8 @@ import React from 'react';
 import {Col, Container, Row, Table} from "react-bootstrap";
 import {addCaptionsObjOrArrayTwoDimensional, isEmptyObj, isObject} from "../../functions/helpers";
 import {FaAd, FaTrashAlt, FaUserEdit} from "react-icons/fa";
-import {forEach} from "react-bootstrap/ElementChildren";
+import Title from "../bootstrap/Title";
+import { useNavigate } from 'react-router-dom';
 
 const td = (i,r) => <td key={i}>{r}</td>
 const th = (i,r) => <td key={i}><b>{r}</b></td>
@@ -16,6 +17,11 @@ const autoAddEmptyCells = (rowLength,lengthAllRow,i,r) => {
     return autoAdd;
 }
 function TableComponent(props) {
+    const title = props.title || 'Table'
+    const btnCreate = props.btnCreate || 'Create element'
+    const btnBackTitle = props.btnBackTitle || '<-Back'
+    const btnBackExist = props.btnBackExist || false
+    const navigate = useNavigate();
     let table = props.datatable || []
     const TestEdit = props.edit || null//((id,e) => console.log(id,'id = Edit'))
     const TestView = props.view || null//((id,e) => console.log(id,'id = View'))
@@ -76,10 +82,41 @@ function TableComponent(props) {
         )
     })
 
+    const divStyle1 = {
+        color: 'blue',
+        //backgroundImage: 'url(' + imgUrl + ')',
+        display: 'flex',
+        alignSelf:'center',
+    };
+    const divStyle2 = {
+        color: 'blue',
+        //backgroundImage: 'url(' + imgUrl + ')',
+        display: 'flex',
+        alignSelf:'center',
+        justifyContent:'space-between',
+    };
+    const btnStyle = {
+        color: 'blue',
+        //backgroundImage: 'url(' + imgUrl + ')',
+        alignSelf:'center',
+    };
+
     return (
         <Container>
             <Row>
                 <Col>
+                    <Row>
+                        <Col style={divStyle1}>
+                            <Title title={title}/>
+                        </Col>
+                        <Col style={divStyle2}>
+                            <button style={btnStyle} onClick={()=>''}>{btnCreate}</button>
+                            { btnBackExist ?
+                                <button style={btnStyle} onClick={() => navigate(-1)}>{btnBackTitle}</button>
+                            : '' }
+
+                        </Col>
+                    </Row>
                     <Table striped bordered hover>
                         <tbody>{tableDom}</tbody>
                     </Table>

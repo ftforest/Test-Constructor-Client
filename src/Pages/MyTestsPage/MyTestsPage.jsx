@@ -4,6 +4,7 @@ import {useTests} from "../../hooks/test-hook";
 import {addCaptionsObjOrArrayTwoDimensional} from "../../functions/helpers";
 
 function MyTestsPage(props) {
+    const currentUrl = '/my-tests-page'
     let table = [
         [123,2312,3333],
         {'as':1,'fgfg':'zxcx'},
@@ -17,7 +18,7 @@ function MyTestsPage(props) {
 
     return (
         <div>
-            <TableComponent datatable={table} edit={TestEdit} view={TestView} delet={TestDelete}/>
+            <TableComponent btnCreate={'Create New Test'} backUrl={currentUrl} datatable={table} edit={TestEdit} view={TestView} delet={TestDelete}/>
         </div>
     );
 }

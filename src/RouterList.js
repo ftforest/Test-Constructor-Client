@@ -27,9 +27,10 @@ const Routery = () => {
                     <Route path='my-tests-page/create/:id' element={<EidtQuestionsPageProviders/>} errorElement={<ErrorPage/>}/>
                     <Route path='my-tests-page/edit/:id' element={<EidtQuestionsPageProviders/>} errorElement={<ErrorPage/>}/>
                     <Route path='my-tests-page/delete/:id' element={<EidtQuestionsPageProviders/>} errorElement={<ErrorPage/>}/>
-                    <Route path='my-tests-page/view/:id' element={<EidtQuestionsPageProviders/>} errorElement={<ErrorPage/>}/>
+                    <Route path='test/view/:id' element={<EidtQuestionsPageProviders/>} errorElement={<ErrorPage/>}/>
 
                     <Route path='question/view/:id' element={<EditQuestionPageProviders/>} errorElement={<ErrorPage/>}/>
+                    <Route path='create/:name-element' element={<EditQuestionPageProviders/>} errorElement={<ErrorPage/>}/>
 
                     <Route
                         path="*"

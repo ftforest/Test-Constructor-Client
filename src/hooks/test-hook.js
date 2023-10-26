@@ -25,7 +25,7 @@ export default function TestProvider({ children }) {
         console.log('TestView')
         console.log(id,'id')
 
-        window.location.href = '/my-tests-page/view/'+id;
+        window.location.href = '/test/view/'+id;
     }
 
     function TestGetId(id) {

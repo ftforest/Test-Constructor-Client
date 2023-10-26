@@ -9,6 +9,7 @@ function EditQuestionPage(props) {
     console.log('EditQuestionPage')
     const { id } = useParams();
     console.log(id,'id ')
+    const currentUrl = '/question/view/' + id
 
     const {QuestionGetId} = useQuestions();
     let questionInfo = QuestionGetId(id)
@@ -19,7 +20,7 @@ function EditQuestionPage(props) {
         <div>
             <div>{ViewObject(questionInfo,'QuestionInfo')}</div>
             <div>{answersList.map((r,i) => ViewObject(r,'Answer: ' + r.value,i))}</div>
-            <TableComponent datatable={answersList} edit={AnswerEdit} view={AnswerView} delet={AnswerDelete} />
+            <TableComponent datatable={answersList} btnBackExist={true} backUrl={currentUrl} edit={AnswerEdit} view={AnswerView} delet={AnswerDelete} />
         </div>
     );
 }

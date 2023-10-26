@@ -1,13 +1,21 @@
-import React, { createContext, useState, useContext } from "react";
-import testsData from '../data/my-tests.json';
-import {storeGetParam} from "../functions/storege";
+import React, {createContext, useState, useContext, useEffect} from "react";
+import testsDataJson from '../data/my-tests.json';
+import {storeGetParam, storeSaveReWtite} from "../functions/storege";
 
 const TestContext = createContext();
 export const useTests = () => useContext(TestContext);
 
-export default function TestProvider({ children }) {
-    const [tests, setTests] = useState(testsData);
-    const NameElement = 'test'
+export default function TestProvider({ children, globalStore }) {
+    const NameElement = 'tests'
+    console.log(globalStore,'globalStore')
+    let testsData = []
+    if (globalStore == 'state') {
+        testsData = testsDataJson
+    }
+    if (globalStore == 'storeg') {
+        testsData = getData(NameElement,testsDataJson) ? testsDataJson : storeGetParam(NameElement)
+    }
+    let [tests, setTests] = useState(testsData);
 
     const structure = {
         'id': '',
@@ -16,9 +24,25 @@ export default function TestProvider({ children }) {
         'created_at': ''
     }
 
+    function getData(NameElement,testsDataJson) {
+        if (storeGetParam(NameElement).length == 0) {
+            storeSaveReWtite(NameElement,testsDataJson)
+            return true
+        } else {
+            return false
+        }
+    }
+
+    function saveData(tests,NameElement,globalStore,testsDataJson = []) {
+
+        return testsData
+    }
+
     function TestSave(el) {
         console.log('TestSave')
         setTests([...tests,el])
+        storeSaveReWtite('tests',[...tests,el])
+        //saveData(NameElement,globalStore,[...tests,el])
     }
 
     function TestEdit(id,e) {
@@ -31,7 +55,9 @@ export default function TestProvider({ children }) {
         console.log(id,'id')
 
         let data = tests.filter(item => item.id != id);
+        //saveData(NameElement,globalStore,[...data])
         setTests(data);
+        storeSaveReWtite('tests',data)
     }
 
     function TestView(id,e) {

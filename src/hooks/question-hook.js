@@ -6,7 +6,7 @@ export const useQuestions = () => useContext(QuestionContext);
 
 export default function QuestionProvider({ children }) {
     const [questions, setQuestions] = useState(questionsData);
-    const NameElement = 'question'
+    const NameElement = 'questions'
 
     const structure = {
         'id': '',

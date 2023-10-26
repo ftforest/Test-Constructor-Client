@@ -22,15 +22,15 @@ function CreateElementPage(props) {
         "id": "example",
         "title": "example"
     }
-    if (nameEl == 'test') {
+    if (nameEl == 'tests') {
         dataObj = test
         listDebugEl = listTest
     }
-    if (nameEl == 'question') {
+    if (nameEl == 'questions') {
         dataObj = question
         listDebugEl = listQuestion
     }
-    if (nameEl == 'answer') {
+    if (nameEl == 'answers') {
         dataObj = answer
         listDebugEl = listAnswer
     }
@@ -42,9 +42,9 @@ function CreateElementPage(props) {
         console.log(formData,'formData')
         const  formDataObj = Object.fromEntries(formData.entries())
         console.log(formDataObj,'formDataObj')
-        if (nameEl == 'test') TestSave(formDataObj)
-        if (nameEl == 'question') QuestionSave(formDataObj)
-        if (nameEl == 'answer') AnswerSave(formDataObj)
+        if (nameEl == 'tests') TestSave(formDataObj)
+        if (nameEl == 'questions') QuestionSave(formDataObj)
+        if (nameEl == 'answers') AnswerSave(formDataObj)
     }
 
 

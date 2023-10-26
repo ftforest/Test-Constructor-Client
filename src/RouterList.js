@@ -14,6 +14,8 @@ import AnswerProvider from "./hooks/answer-hook";
 import CreateElementPage from "./Pages/MyTestsPage/CreateElementPage/CreateElementPage";
 
 const Routery = () => {
+    const storeType = ['state','storeg','redux']
+    const globalStore = storeType[1]
     return (
         <BrowserRouter>
                 <Routes>
@@ -22,16 +24,16 @@ const Routery = () => {
                     <Route path='complited-tests' element={<ListTestsComplitePage/>} errorElement={<ErrorPage/>}/>
                     <Route path='create-test/:id' element={<CreateTest/>} errorElement={<ErrorPage/>}/>
 
-                    <Route path='my-tests-page' element={<TestProvider><MyTestsPage/></TestProvider>} errorElement={<ErrorPage/>}/>
+                    <Route path='my-tests-page' element={<WrapProviders globalStore={globalStore}><MyTestsPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
                     <Route path='complited-tests-page' element={<ComplitedTestsPage/>} errorElement={<ErrorPage/>}/>
 
                     <Route path='my-tests-page/create/:id' element={<EidtQuestionsPageProviders/>} errorElement={<ErrorPage/>}/>
                     <Route path='my-tests-page/edit/:id' element={<EidtQuestionsPageProviders/>} errorElement={<ErrorPage/>}/>
                     <Route path='my-tests-page/delete/:id' element={<EidtQuestionsPageProviders/>} errorElement={<ErrorPage/>}/>
 
-                    <Route path='test/view/:id' element={<WrapProviders><EditTestsPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
+                    <Route path='test/view/:id' element={<WrapProviders globalStore={globalStore}><EditTestsPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
                     <Route path='question/view/:id' element={<WrapProviders><EditQuestionPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
-                    <Route path='create/:name' element={<WrapProviders><CreateElementPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
+                    <Route path='create/:name' element={<WrapProviders globalStore={globalStore}><CreateElementPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
 
                     <Route
                         path="*"
@@ -52,9 +54,9 @@ const EidtQuestionsPageProviders = () => {
     )
 }
 
-const WrapProviders = ({children}) => {
+const WrapProviders = ({children,globalStore}) => {
     return (
-        <TestProvider>
+        <TestProvider globalStore={globalStore}>
             <QuestionProvider>
                 <AnswerProvider>
                     {children}

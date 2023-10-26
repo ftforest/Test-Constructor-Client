@@ -30,7 +30,8 @@ function TableComponent(props) {
     const TestView = props.view || null//((id,e) => console.log(id,'id = View'))
     const TestDelete = props.delet || null//((id,e) => console.log(id,'id = Delete'))
     const tableDom = []
-    const lengthAllRow = table[0].length
+    let lengthAllRow = 0
+    if (table[0] != undefined) lengthAllRow = table[0].length
 
     let captionsName = []
     if(table != undefined && isObject(table[0])) {

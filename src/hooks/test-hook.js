@@ -7,6 +7,7 @@ export const useTests = () => useContext(TestContext);
 
 export default function TestProvider({ children }) {
     const [tests, setTests] = useState(testsData);
+    const NameElement = 'test'
 
     function TestEdit(id,e) {
         console.log('TestEdit')
@@ -34,7 +35,7 @@ export default function TestProvider({ children }) {
     }
 
     return (
-        <TestContext.Provider value={{ tests, TestEdit, TestDelete, TestView, TestGetId }}>
+        <TestContext.Provider value={{ NameElement, tests, TestEdit, TestDelete, TestView, TestGetId }}>
             {children}
         </TestContext.Provider>
     );

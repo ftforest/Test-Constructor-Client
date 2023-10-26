@@ -13,12 +13,12 @@ function MyTestsPage(props) {
         {},
         ['999']
     ]
-    const {tests, TestEdit, TestDelete, TestView} = useTests();
+    const {tests, TestEdit, TestDelete, TestView, NameElement} = useTests();
     table = tests;
 
     return (
         <div>
-            <TableComponent btnCreate={'Create New Test'} backUrl={currentUrl} datatable={table} edit={TestEdit} view={TestView} delet={TestDelete}/>
+            <TableComponent btnCreate={'Create New Test'} createEl={NameElement} datatable={table} edit={TestEdit} view={TestView} delet={TestDelete}/>
         </div>
     );
 }

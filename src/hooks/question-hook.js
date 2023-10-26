@@ -6,6 +6,7 @@ export const useQuestions = () => useContext(QuestionContext);
 
 export default function QuestionProvider({ children }) {
     const [questions, setQuestions] = useState(questionsData);
+    const NameElement = 'question'
 
     function QuestionEdit(id,e) {
         console.log('QuestionEdit')
@@ -38,7 +39,7 @@ export default function QuestionProvider({ children }) {
     }
 
     return (
-        <QuestionContext.Provider value={{ questions, QuestionEdit, QuestionDelete, QuestionView, QuestionGetId,QuestionGetTestId }}>
+        <QuestionContext.Provider value={{ questions, QuestionEdit, QuestionDelete, QuestionView, QuestionGetId,QuestionGetTestId, NameElement }}>
             {children}
         </QuestionContext.Provider>
     );

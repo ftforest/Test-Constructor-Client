@@ -21,7 +21,10 @@ function TableComponent(props) {
     const btnCreate = props.btnCreate || 'Create element'
     const btnBackTitle = props.btnBackTitle || '<-Back'
     const btnBackExist = props.btnBackExist || false
+    const createEl = props.createEl || ''
+
     const navigate = useNavigate();
+
     let table = props.datatable || []
     const TestEdit = props.edit || null//((id,e) => console.log(id,'id = Edit'))
     const TestView = props.view || null//((id,e) => console.log(id,'id = View'))
@@ -101,6 +104,11 @@ function TableComponent(props) {
         alignSelf:'center',
     };
 
+    function createElementF(nameEl,e) {
+        //e.preventDefault()
+        window.location.href = '/create/' + nameEl;
+    }
+
     return (
         <Container>
             <Row>
@@ -110,7 +118,7 @@ function TableComponent(props) {
                             <Title title={title}/>
                         </Col>
                         <Col style={divStyle2}>
-                            <button style={btnStyle} onClick={()=>''}>{btnCreate}</button>
+                            <button type="button" style={btnStyle} onClick={(e) => createElementF(createEl,e)}>{btnCreate}</button>
                             { btnBackExist ?
                                 <button style={btnStyle} onClick={() => navigate(-1)}>{btnBackTitle}</button>
                             : '' }

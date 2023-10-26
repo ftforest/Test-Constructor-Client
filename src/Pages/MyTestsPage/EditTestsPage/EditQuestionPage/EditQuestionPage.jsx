@@ -14,13 +14,13 @@ function EditQuestionPage(props) {
     const {QuestionGetId} = useQuestions();
     let questionInfo = QuestionGetId(id)
 
-    const {AnswerGetQuestionId, AnswerEdit, AnswerDelete, AnswerView} = useAnswers();
+    const {AnswerGetQuestionId, AnswerEdit, AnswerDelete, AnswerView, NameElement} = useAnswers();
     let answersList = AnswerGetQuestionId(questionInfo.id)
     return (
         <div>
             <div>{ViewObject(questionInfo,'QuestionInfo')}</div>
             <div>{answersList.map((r,i) => ViewObject(r,'Answer: ' + r.value,i))}</div>
-            <TableComponent datatable={answersList} btnBackExist={true} backUrl={currentUrl} edit={AnswerEdit} view={AnswerView} delet={AnswerDelete} />
+            <TableComponent datatable={answersList} createEl={NameElement} btnBackExist={true} backUrl={currentUrl} edit={AnswerEdit} view={AnswerView} delet={AnswerDelete} />
         </div>
     );
 }

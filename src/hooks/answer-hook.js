@@ -6,6 +6,7 @@ export const useAnswers = () => useContext(AnswerContext);
 
 export default function AnswerProvider({ children }) {
     const [answers, setAnswers] = useState(answersData);
+    const NameElement = 'answer'
 
     function AnswerEdit(id,e) {
         console.log('AnswerEdit')
@@ -38,7 +39,7 @@ export default function AnswerProvider({ children }) {
     }
 
     return (
-        <AnswerContext.Provider value={{ answers, AnswerEdit, AnswerDelete, AnswerView, AnswerGetId,AnswerGetQuestionId }}>
+        <AnswerContext.Provider value={{ answers, AnswerEdit, AnswerDelete, AnswerView, AnswerGetId,AnswerGetQuestionId, NameElement }}>
             {children}
         </AnswerContext.Provider>
     );

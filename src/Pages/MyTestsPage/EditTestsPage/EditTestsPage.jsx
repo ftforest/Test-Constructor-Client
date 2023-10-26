@@ -13,14 +13,14 @@ function EditTestsPage(props) {
     const {TestGetId} = useTests();
     let testInfo = TestGetId(id)
 
-    const {QuestionGetTestId, QuestionEdit, QuestionDelete, QuestionView} = useQuestions();
+    const {QuestionGetTestId, QuestionEdit, QuestionDelete, QuestionView, NameElement} = useQuestions();
     let questionsList = QuestionGetTestId(testInfo.id)
 
     return (
         <>
             <div>{ViewObject(testInfo,'TestInfo')}</div>
             <div>{questionsList.map((r,i) => ViewObject(r,'Question: ' + r.description,i))}</div>
-            <TableComponent datatable={questionsList} btnBackExist={true} backUrl={currentUrl} edit={QuestionEdit} view={QuestionView} delet={QuestionDelete} />
+            <TableComponent datatable={questionsList} createEl={NameElement} btnBackExist={true} backUrl={currentUrl} edit={QuestionEdit} view={QuestionView} delet={QuestionDelete} />
         </>
 );
 }

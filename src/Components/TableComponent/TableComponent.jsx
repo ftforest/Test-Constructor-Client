@@ -22,6 +22,7 @@ function TableComponent(props) {
     const btnBackTitle = props.btnBackTitle || '<-Back'
     const btnBackExist = props.btnBackExist || false
     const createEl = props.createEl || ''
+    const additionalId = props.additionalId || 0
 
     const navigate = useNavigate();
 
@@ -107,7 +108,7 @@ function TableComponent(props) {
 
     function createElementF(nameEl,e) {
         //e.preventDefault()
-        window.location.href = '/create/' + nameEl;
+        window.location.href = '/create/' + nameEl + '/' + additionalId ;
     }
 
     return (

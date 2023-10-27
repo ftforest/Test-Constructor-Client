@@ -1,17 +1,27 @@
 import React, { createContext, useState, useContext } from "react";
-import questionsData from '../data/questions.json';
+import questionsDataJson from '../data/questions.json';
+import {storeGetParam, storeSaveReWtite} from "../functions/storege";
+import {getData} from "../functions/helpers";
 
 const QuestionContext = createContext();
 export const useQuestions = () => useContext(QuestionContext);
 
-export default function QuestionProvider({ children }) {
-    const [questions, setQuestions] = useState(questionsData);
+export default function QuestionProvider({ children, globalStore  }) {
     const NameElement = 'questions'
+    console.log(globalStore,'globalStore')
+    let questionsData = []
+    if (globalStore == 'state') {
+        questionsData = questionsDataJson
+    }
+    if (globalStore == 'storeg') {
+        questionsData = getData(NameElement,questionsDataJson) ? questionsDataJson : storeGetParam(NameElement)
+    }
+    const [questions, setQuestions] = useState(questionsData);
 
     const structure = {
         'id': '',
         'description': '',
-        'test_id': '',
+        'test_id': 'addId',
         'type': '',
         'order': ''
     }
@@ -19,6 +29,7 @@ export default function QuestionProvider({ children }) {
     function QuestionSave(el) {
         console.log('QuestionSave')
         setQuestions([...questions,el])
+        storeSaveReWtite(NameElement,[...questions,el])
     }
 
     function QuestionEdit(id,e) {
@@ -32,6 +43,7 @@ export default function QuestionProvider({ children }) {
 
         let data = questions.filter(item => item.id != id);
         setQuestions(data);
+        storeSaveReWtite(NameElement,data)
     }
 
     function QuestionView(id,e) {

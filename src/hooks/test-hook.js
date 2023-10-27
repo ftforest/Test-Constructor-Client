@@ -1,6 +1,7 @@
 import React, {createContext, useState, useContext, useEffect} from "react";
 import testsDataJson from '../data/my-tests.json';
 import {storeGetParam, storeSaveReWtite} from "../functions/storege";
+import {getData} from "../functions/helpers";
 
 const TestContext = createContext();
 export const useTests = () => useContext(TestContext);
@@ -24,25 +25,10 @@ export default function TestProvider({ children, globalStore }) {
         'created_at': ''
     }
 
-    function getData(NameElement,testsDataJson) {
-        if (storeGetParam(NameElement).length == 0) {
-            storeSaveReWtite(NameElement,testsDataJson)
-            return true
-        } else {
-            return false
-        }
-    }
-
-    function saveData(tests,NameElement,globalStore,testsDataJson = []) {
-
-        return testsData
-    }
-
     function TestSave(el) {
         console.log('TestSave')
         setTests([...tests,el])
-        storeSaveReWtite('tests',[...tests,el])
-        //saveData(NameElement,globalStore,[...tests,el])
+        storeSaveReWtite(NameElement,[...tests,el])
     }
 
     function TestEdit(id,e) {
@@ -55,9 +41,8 @@ export default function TestProvider({ children, globalStore }) {
         console.log(id,'id')
 
         let data = tests.filter(item => item.id != id);
-        //saveData(NameElement,globalStore,[...data])
         setTests(data);
-        storeSaveReWtite('tests',data)
+        storeSaveReWtite(NameElement,data)
     }
 
     function TestView(id,e) {

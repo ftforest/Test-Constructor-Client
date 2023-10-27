@@ -4,7 +4,6 @@ import {useTests} from "../../hooks/test-hook";
 import {addCaptionsObjOrArrayTwoDimensional} from "../../functions/helpers";
 
 function MyTestsPage(props) {
-    const currentUrl = '/my-tests-page'
     let table = [
         [123,2312,3333],
         {'as':1,'fgfg':'zxcx'},

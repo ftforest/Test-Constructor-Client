@@ -1,23 +1,33 @@
 import React, { createContext, useState, useContext } from "react";
-import answersData from '../data/answers.json';
+import answersDataJson from '../data/answers.json';
+import {getData} from "../functions/helpers";
+import {storeGetParam, storeSaveReWtite} from "../functions/storege";
 
 const AnswerContext = createContext();
 export const useAnswers = () => useContext(AnswerContext);
 
-export default function AnswerProvider({ children }) {
-    const [answers, setAnswers] = useState(answersData);
+export default function AnswerProvider({ children, globalStore }) {
     const NameElement = 'answers'
+    let answersData = []
+    if (globalStore == 'state') {
+        answersData = answersDataJson
+    }
+    if (globalStore == 'storeg') {
+        answersData = getData(NameElement,answersDataJson) ? answersDataJson : storeGetParam(NameElement)
+    }
+    const [answers, setAnswers] = useState(answersData);
 
     const structure = {
         'id': '',
         'value': '',
         'correct': '',
-        'question_id': ''
+        'question_id': 'addId'
     }
 
     function AnswerSave(el) {
         console.log('AnswerSave')
         setAnswers([...answers,el])
+        storeSaveReWtite(NameElement,[...answers,el])
     }
 
     function AnswerEdit(id,e) {
@@ -31,6 +41,7 @@ export default function AnswerProvider({ children }) {
 
         let data = answers.filter(item => item.id != id);
         setAnswers(data);
+        storeSaveReWtite(NameElement,data)
     }
 
     function AnswerView(id,e) {

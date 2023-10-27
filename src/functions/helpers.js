@@ -1,3 +1,5 @@
+import {storeGetParam, storeSaveReWtite} from "./storege";
+
 export function print(data,text = 'print') {
     console.log(text+":",data);
 }
@@ -53,4 +55,13 @@ export function ViewObject (obj,debugT = 'Debug',i = 0) {
             </ul>
         </div>
     )
+}
+
+export function getData(NameElement,testsDataJson) {
+    if (storeGetParam(NameElement).length == 0) {
+        storeSaveReWtite(NameElement,testsDataJson)
+        return true
+    } else {
+        return false
+    }
 }

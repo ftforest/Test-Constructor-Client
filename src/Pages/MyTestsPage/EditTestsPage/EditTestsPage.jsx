@@ -8,7 +8,6 @@ function EditTestsPage(props) {
     console.log('EditTestsPage')
     const { id } = useParams();
     console.log(id,'id ')
-    const currentUrl = '/test/view/' + id
 
     const {TestGetId} = useTests();
     let testInfo = TestGetId(id)
@@ -20,7 +19,7 @@ function EditTestsPage(props) {
         <>
             <div>{ViewObject(testInfo,'TestInfo')}</div>
             <div>{questionsList.map((r,i) => ViewObject(r,'Question: ' + r.description,i))}</div>
-            <TableComponent datatable={questionsList} createEl={NameElement} btnBackExist={true} backUrl={currentUrl} edit={QuestionEdit} view={QuestionView} delet={QuestionDelete} />
+            <TableComponent datatable={questionsList} additionalId={testInfo.id} createEl={NameElement} btnBackExist={true} edit={QuestionEdit} view={QuestionView} delet={QuestionDelete} />
         </>
 );
 }

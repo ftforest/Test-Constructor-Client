@@ -19,21 +19,42 @@ export default function TestProvider({ children, globalStore }) {
     let [tests, setTests] = useState(testsData);
 
     const structure = {
-        'id': '',
-        'title': '',
-        'author_id': '',
-        'created_at': ''
+        'id': {
+            'value':'',
+            'type':'text',
+        },
+        'title': {
+            'value':'',
+            'type':'text',
+        },
+        'author_id': {
+            'value':'addId',
+            'type':'text',
+        },
+        'created_at': {
+            'value':'2018-07-22',
+            'type':'date',
+        }
     }
 
-    function TestSave(el) {
+    function TestSave(el,update = false) {
         console.log('TestSave')
-        setTests([...tests,el])
-        storeSaveReWtite(NameElement,[...tests,el])
+
+        if (update) {
+            let data = tests.filter(item => item.id != el.id)
+            setTests([...data,el])
+            storeSaveReWtite(NameElement,[...data,el])
+        } else {
+            setTests([...tests,el])
+            storeSaveReWtite(NameElement,[...tests,el])
+        }
     }
 
     function TestEdit(id,e) {
         console.log('TestEdit')
         console.log(id,'id')
+
+        window.location.href = '/edit/' + NameElement + '/' + id;
     }
 
     function TestDelete(id,e) {

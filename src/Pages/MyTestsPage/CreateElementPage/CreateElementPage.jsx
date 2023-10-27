@@ -5,40 +5,52 @@ import {useQuestions} from "../../../hooks/question-hook";
 import {useAnswers} from "../../../hooks/answer-hook";
 import {Col, Container, Form, Row,Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
-import {ViewObject} from "../../../functions/helpers";
+import {structureGetValue, ViewObject} from "../../../functions/helpers";
 
 function CreateElementPage(props) {
-    const { name,additionalId } = useParams();
+    const { name,additionalId, id } = useParams();
     console.log(name,'name ')
     console.log(additionalId,'additionalId ')
+    console.log(id,'id ')
+
     const addId = additionalId || 0
     const nameEl = name || 'empty name'
     const navigate = useNavigate();
     let structure = {}
 
     let listDebugEl = []
-    let {structure:test,TestSave,tests:listTest} = useTests()
-    let {structure:question,QuestionSave,questions:listQuestion} = useQuestions()
-    let {structure:answer,AnswerSave,answers:listAnswer} = useAnswers()
+    let {structure:test,TestSave,tests:listTest,TestGetId} = useTests()
+    let {structure:question,QuestionSave,questions:listQuestion,QuestionGetId} = useQuestions()
+    let {structure:answer,AnswerSave,answers:listAnswer,AnswerGetId} = useAnswers()
 
     let additionalData = props.additionalData
 
     let dataObj = props.dataObj || {
-        "id": "example",
-        "title": "example"
+        "id": {
+            'value':'example',
+            'type':'text',
+        },
+        "title": {
+            'value':'example',
+            'type':'text',
+        }
     }
     if (nameEl == 'tests') {
-        dataObj = test
+        if (id != undefined) dataObj = TestGetId(id)
+        else dataObj = structureGetValue(test)
         listDebugEl = listTest
         structure = test
+
     }
     if (nameEl == 'questions') {
-        dataObj = question
+        if (id != undefined) dataObj = QuestionGetId(id)
+        else dataObj = structureGetValue(question)
         listDebugEl = listQuestion
         structure = question
     }
     if (nameEl == 'answers') {
-        dataObj = answer
+        if (id != undefined) dataObj = AnswerGetId(id)
+        else dataObj = structureGetValue(answer)
         listDebugEl = listAnswer
         structure = answer
     }
@@ -50,19 +62,26 @@ function CreateElementPage(props) {
         console.log(formData,'formData')
         const  formDataObj = Object.fromEntries(formData.entries())
         console.log(formDataObj,'formDataObj')
-        if (nameEl == 'tests') TestSave(formDataObj)
-        if (nameEl == 'questions') QuestionSave(formDataObj)
-        if (nameEl == 'answers') AnswerSave(formDataObj)
+
+        if (id == undefined) {
+            if (nameEl == 'tests') TestSave(formDataObj)
+            if (nameEl == 'questions') QuestionSave(formDataObj)
+            if (nameEl == 'answers') AnswerSave(formDataObj)
+        } else {
+            if (nameEl == 'tests') TestSave(formDataObj,true)
+            if (nameEl == 'questions') QuestionSave(formDataObj,true)
+            if (nameEl == 'answers') AnswerSave(formDataObj,true)
+        }
     }
 
 
 
     let form = []
-    Object.keys(dataObj).forEach((key,idx) =>
+    Object.keys(structure).forEach((key,idx) =>
         form.push(
             <Form.Group key={idx} className="mb-3" controlId="formBasicEmail">
                 <Form.Label>{key}</Form.Label>
-                <Form.Control type="text" placeholder={key} name={key} readOnly={'addId' == structure[key] ?? true}  defaultValue={key.match(/_id/) ? addId : dataObj[key]} />
+                <Form.Control type={structure[key].type} placeholder={key} name={key} readOnly={(id != undefined && key == 'id' ) || 'addId' == structure[key].value ? true : false}  defaultValue={key.match(/_id/) ? addId : dataObj[key]} />
                 <Form.Text className="text-muted">
                 </Form.Text>
             </Form.Group>
@@ -78,7 +97,7 @@ function CreateElementPage(props) {
                     <Form onSubmit={Save}>
                         {form}
                         <Button variant="primary" type="submit" size="lg" active>
-                            Save {nameEl}
+                            {id == undefined ? 'Save' : 'Update'} {nameEl}
                         </Button>{' '}
                         <Button onClick={() => navigate(-1)} variant="secondary" size="lg" active>
                             Back

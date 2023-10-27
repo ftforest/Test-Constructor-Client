@@ -18,21 +18,42 @@ export default function AnswerProvider({ children, globalStore }) {
     const [answers, setAnswers] = useState(answersData);
 
     const structure = {
-        'id': '',
-        'value': '',
-        'correct': '',
-        'question_id': 'addId'
+        'id': {
+            'value':'',
+            'type':'text',
+        },
+        'value': {
+            'value':'',
+            'type':'text',
+        },
+        'correct': {
+            'value':'',
+            'type':'text',
+        },
+        'question_id': {
+            'value':'addId',
+            'type':'text',
+        }
     }
 
-    function AnswerSave(el) {
+    function AnswerSave(el,update = false) {
         console.log('AnswerSave')
-        setAnswers([...answers,el])
-        storeSaveReWtite(NameElement,[...answers,el])
+
+        if (update) {
+            let data = answers.filter(item => item.id != el.id)
+            setAnswers([...data,el])
+            storeSaveReWtite(NameElement,[...data,el])
+        } else {
+            setAnswers([...answers,el])
+            storeSaveReWtite(NameElement,[...answers,el])
+        }
     }
 
     function AnswerEdit(id,e) {
         console.log('AnswerEdit')
         console.log(id,'id')
+
+        window.location.href = '/edit/' + NameElement + '/' + id;
     }
 
     function AnswerDelete(id,e) {

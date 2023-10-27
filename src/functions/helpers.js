@@ -65,3 +65,12 @@ export function getData(NameElement,testsDataJson) {
         return false
     }
 }
+
+export function structureGetValue (objStructure) {
+    let obj = {}
+    Object.keys(objStructure).forEach((key,idx) => {
+        obj[key] = objStructure[key].value
+    })
+    console.log(obj,'obj')
+    return obj;
+}

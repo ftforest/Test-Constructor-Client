@@ -27,9 +27,9 @@ function TableComponent(props) {
     const navigate = useNavigate();
 
     let table = props.datatable || []
-    const TestEdit = props.edit || null//((id,e) => console.log(id,'id = Edit'))
-    const TestView = props.view || null//((id,e) => console.log(id,'id = View'))
-    const TestDelete = props.delet || null//((id,e) => console.log(id,'id = Delete'))
+    const Edit = props.edit || null//((id,e) => console.log(id,'id = Edit'))
+    const View = props.view || null//((id,e) => console.log(id,'id = View'))
+    const Delete = props.delet || null//((id,e) => console.log(id,'id = Delete'))
     const tableDom = []
     let lengthAllRow = 0
     if (table[0] != undefined) lengthAllRow = table[0].length
@@ -63,21 +63,21 @@ function TableComponent(props) {
                 <td>
                     {index == 0 ? <b>actions</b> :
                         <div className={'wrap-icon-edit'}>
-                            { TestEdit != null ?
+                            { Edit != null ?
                             <FaUserEdit
                                 className={`icon-edit`}
                                 color={'red'}
-                                onClick={(e) => TestEdit(id, e)}/>
+                                onClick={(e) => Edit(id,additionalId, e)}/>
                                 : ''}
-                            { TestDelete != null ?
+                            { Delete != null ?
                             <FaTrashAlt
                                 className={`icon-edit`}
-                                onClick={(e) => TestDelete(id, e)}/>
+                                onClick={(e) => Delete(id, e)}/>
                                 : ''}
-                            { TestView != null ?
+                            { View != null ?
                             <FaAd
                                 className={`icon-edit`}
-                                onClick={(e) => TestView(id, e)}/>
+                                onClick={(e) => View(id, e)}/>
                                 : ''}
                         </div>
                     }

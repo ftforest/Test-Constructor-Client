@@ -19,22 +19,46 @@ export default function QuestionProvider({ children, globalStore  }) {
     const [questions, setQuestions] = useState(questionsData);
 
     const structure = {
-        'id': '',
-        'description': '',
-        'test_id': 'addId',
-        'type': '',
-        'order': ''
+        'id': {
+            'value':'',
+            'type':'text',
+        },
+        'description': {
+            'value':'',
+            'type':'text',
+        },
+        'test_id': {
+            'value':'addId',
+            'type':'text',
+        },
+        'type': {
+            'value':'',
+            'type':'text',
+        },
+        'order': {
+            'value':'2',
+            'type':'text',
+        }
     }
 
-    function QuestionSave(el) {
+    function QuestionSave(el,update = false) {
         console.log('QuestionSave')
-        setQuestions([...questions,el])
-        storeSaveReWtite(NameElement,[...questions,el])
+
+        if (update) {
+            let data = questions.filter(item => item.id != el.id)
+            setQuestions([...data,el])
+            storeSaveReWtite(NameElement,[...data,el])
+        } else {
+            setQuestions([...questions,el])
+            storeSaveReWtite(NameElement,[...questions,el])
+        }
     }
 
-    function QuestionEdit(id,e) {
+    function QuestionEdit(id,addId,e) {
         console.log('QuestionEdit')
         console.log(id,'id')
+
+        window.location.href = '/edit/' + NameElement + '/' + addId + '/' + id;
     }
 
     function QuestionDelete(id,e) {

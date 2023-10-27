@@ -111,6 +111,10 @@ function TableComponent(props) {
         window.location.href = '/create/' + nameEl + '/' + additionalId ;
     }
 
+    function clearLocalStoreg(nameTable,e) {
+        window.localStorage.removeItem(nameTable);
+    }
+
     return (
         <Container>
             <Row>
@@ -121,6 +125,7 @@ function TableComponent(props) {
                         </Col>
                         <Col style={divStyle2}>
                             <button type="button" style={btnStyle} onClick={(e) => createElementF(createEl,e)}>{btnCreate}</button>
+                            <button type="button" style={btnStyle} onClick={(e) => clearLocalStoreg(createEl,e)}>clearLocalStoreg: {createEl}</button>
                             { btnBackExist ?
                                 <button style={btnStyle} onClick={() => navigate(-1)}>{btnBackTitle}</button>
                             : '' }

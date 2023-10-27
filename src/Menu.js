@@ -1,6 +1,6 @@
 import {React} from 'react';
 import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
-import {useStates} from "./StateProvider";
+import {useStates} from "./Components/bootstrap/StateProvider";
 
 
 function Menu(props) {
@@ -18,6 +18,7 @@ function Menu(props) {
                     <NavDropdown.Divider/>
                     <NavDropdown.Item href="/tests">Страница Мои тесты</NavDropdown.Item>
                     <NavDropdown.Item href="/complited-tests-page">Страница Завершенные тесты</NavDropdown.Item>
+                    <NavDropdown.Item href="/test/solution/1">Пройти тест с ID = 1</NavDropdown.Item>
                     <NavDropdown.Item href="/exit" onClick={LogoutApp}>Выход</NavDropdown.Item>
                 </NavDropdown>
     }

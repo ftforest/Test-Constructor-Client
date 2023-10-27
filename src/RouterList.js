@@ -6,12 +6,13 @@ import CreateTest from "./Components/bootstrap/PagesMyTest/CreateTest";
 import ListTestsComplitePage from "./Components/bootstrap/ListTestsComplitePage";
 import MyTestsPage from "./Pages/MyTestsPage/MyTestsPage";
 import ComplitedTestsPage from "./Pages/ComplitedTestsPage/ComplitedTestsPage";
-import EditTestsPage from "./Pages/MyTestsPage/EditTestsPage/EditTestsPage";
+import EditTestsPage from "./Pages/MyTestsPage/EditTestsPage/EditQuestionsPage";
 import TestProvider from "./hooks/test-hook";
 import QuestionProvider from "./hooks/question-hook";
-import EditQuestionPage from "./Pages/MyTestsPage/EditTestsPage/EditQuestionPage/EditQuestionPage";
+import EditQuestionPage from "./Pages/MyTestsPage/EditTestsPage/EditQuestionPage/EditAnswersPage";
 import AnswerProvider from "./hooks/answer-hook";
 import CreateElementPage from "./Pages/MyTestsPage/CreateElementPage/CreateElementPage";
+import TestSolutionPage from "./Pages/TestSolutionPage/TestSolutionPage";
 
 const Routery = () => {
     const storeType = ['state','storeg','redux']
@@ -27,14 +28,12 @@ const Routery = () => {
                     <Route path='tests' element={<WrapProviders globalStore={globalStore}><MyTestsPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
                     <Route path='complited-tests-page' element={<ComplitedTestsPage/>} errorElement={<ErrorPage/>}/>
 
-                    <Route path='tests/create/:id' element={<EidtQuestionsPageProviders/>} errorElement={<ErrorPage/>}/>
-                    <Route path='tests/edit/:id' element={<EidtQuestionsPageProviders/>} errorElement={<ErrorPage/>}/>
-                    <Route path='tests/delete/:id' element={<EidtQuestionsPageProviders/>} errorElement={<ErrorPage/>}/>
-
                     <Route path='test/view/:id' element={<WrapProviders globalStore={globalStore}><EditTestsPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
                     <Route path='question/view/:id' element={<WrapProviders globalStore={globalStore}><EditQuestionPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
                     <Route path='create/:name/:additionalId' element={<WrapProviders globalStore={globalStore}><CreateElementPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
                     <Route path='edit/:name/:additionalId/:id' element={<WrapProviders globalStore={globalStore}><CreateElementPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
+
+                    <Route path='test/solution/:id' element={<WrapProviders globalStore={globalStore}><TestSolutionPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
 
                     <Route
                         path="*"
@@ -44,16 +43,6 @@ const Routery = () => {
         </BrowserRouter>
     );
 };
-
-const EidtQuestionsPageProviders = () => {
-    return (
-        <QuestionProvider>
-            <TestProvider>
-                <EditTestsPage/>
-            </TestProvider>
-        </QuestionProvider>
-    )
-}
 
 const WrapProviders = ({children,globalStore}) => {
     return (

@@ -4,7 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { StateProvider } from "./Components/bootstrap/StateProvider"
 import Routery from "./RouterList";
-import Menu from "./Components/bootstrap/Menu";
+import Menu from "./Menu";
 import "./index.css"
 
 

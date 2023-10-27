@@ -50,11 +50,11 @@ export default function TestProvider({ children, globalStore }) {
         }
     }
 
-    function TestEdit(id,e) {
+    function TestEdit(id,addId,e) {
         console.log('TestEdit')
         console.log(id,'id')
 
-        window.location.href = '/edit/' + NameElement + '/' + id;
+        window.location.href = '/edit/' + NameElement + '/' + addId + '/' + id;
     }
 
     function TestDelete(id,e) {

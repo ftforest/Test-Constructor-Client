@@ -49,11 +49,11 @@ export default function AnswerProvider({ children, globalStore }) {
         }
     }
 
-    function AnswerEdit(id,e) {
+    function AnswerEdit(id,addId,e) {
         console.log('AnswerEdit')
         console.log(id,'id')
 
-        window.location.href = '/edit/' + NameElement + '/' + id;
+        window.location.href = '/edit/' + NameElement + '/' + addId + '/' + id;
     }
 
     function AnswerDelete(id,e) {

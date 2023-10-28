@@ -4,6 +4,7 @@ import {useTests} from "../../hooks/test-hook";
 import {addCaptionsObjOrArrayTwoDimensional} from "../../functions/helpers";
 
 function MyTestsPage(props) {
+    let author_id = 14
     let table = [
         [123,2312,3333],
         {'as':1,'fgfg':'zxcx'},
@@ -17,7 +18,7 @@ function MyTestsPage(props) {
 
     return (
         <div>
-            <TableComponent btnCreate={'Create New Test'} createEl={NameElement} datatable={table} edit={TestEdit} view={TestView} delet={TestDelete}/>
+            <TableComponent btnCreate={'Create New Test'} additionalId={author_id} createEl={NameElement} datatable={table} edit={TestEdit} view={TestView} delet={TestDelete}/>
         </div>
     );
 }

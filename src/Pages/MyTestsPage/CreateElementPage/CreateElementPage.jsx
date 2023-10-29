@@ -6,6 +6,7 @@ import {useAnswers} from "../../../hooks/answer-hook";
 import {Col, Container, Form, Row,Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {structureGetValue, ViewObject} from "../../../functions/helpers";
+import FormElementsComponent from "../../../Components/FormElementsComponent/FormElementsComponent";
 
 function CreateElementPage(props) {
     const { name,additionalId, id } = useParams();
@@ -95,6 +96,7 @@ function CreateElementPage(props) {
                     {nameEl}
                     <br/>
                     <Form onSubmit={Save}>
+                        <FormElementsComponent id={id} addId={addId} structure={structure} dataObj={dataObj} />
                         {form}
                         <Button variant="primary" type="submit" size="lg" active>
                             {id == undefined ? 'Save' : 'Update'} {nameEl}

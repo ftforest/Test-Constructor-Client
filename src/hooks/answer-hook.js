@@ -27,8 +27,12 @@ export default function AnswerProvider({ children, globalStore }) {
             'type':'text',
         },
         'correct': {
-            'value':'',
-            'type':'text',
+            'value':true,
+            'type':'list',
+            'options':{
+                'true': true,
+                'false': false,
+            }
         },
         'question_id': {
             'value':'addId',

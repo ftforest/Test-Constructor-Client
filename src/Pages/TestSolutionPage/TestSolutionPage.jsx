@@ -16,17 +16,26 @@ function TestSolutionPage(props) {
     let testInfo = TestGetId(id)
     let testQuestionList = QuestionGetTestId(testInfo.id)
     let testAnswerQuestionList = []
+
     testQuestionList.map((question,idx) => {
         let item = AnswerGetQuestionId(question.id)
         testAnswerQuestionList.push([question.id,item])
     })
+
     console.log(testQuestionList,'testQuestionList')
     console.log(testAnswerQuestionList,'testAnswerQuestionList')
-
     return (
-        <div>dfsdfsd
-            {testQuestionList.map((val,idx,arr) =>
-                <div>Question({val.id}): {val.description}</div>
+        <div>{testInfo.title}
+
+            {testQuestionList.map((question,idx,arr) =>
+                { let answerOneQuestion = []; testAnswerQuestionList.map(answers => question.id == answers[0] ? answerOneQuestion.push(answers[1].map((answer) => question.id == answer.question_id ? <li>{answer.value}</li> : '')) : '')
+                    return (
+                        <div>
+                            <div>Question({question.id}): {question.description}</div>
+                            <ul>{answerOneQuestion}</ul>
+                        </div>
+                    )
+                }
             )}
         </div>
     );

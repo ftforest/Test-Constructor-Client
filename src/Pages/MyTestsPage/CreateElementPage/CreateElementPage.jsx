@@ -77,7 +77,7 @@ function CreateElementPage(props) {
 
 
 
-    let form = []
+    /*let form = []
     Object.keys(structure).forEach((key,idx) =>
         form.push(
             <Form.Group key={idx} className="mb-3" controlId="formBasicEmail">
@@ -86,7 +86,7 @@ function CreateElementPage(props) {
                 <Form.Text className="text-muted">
                 </Form.Text>
             </Form.Group>
-        ))
+        ))*/
 
     return (
         <Container>
@@ -97,7 +97,6 @@ function CreateElementPage(props) {
                     <br/>
                     <Form onSubmit={Save}>
                         <FormElementsComponent id={id} addId={addId} structure={structure} dataObj={dataObj} />
-                        {form}
                         <Button variant="primary" type="submit" size="lg" active>
                             {id == undefined ? 'Save' : 'Update'} {nameEl}
                         </Button>{' '}

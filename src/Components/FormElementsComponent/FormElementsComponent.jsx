@@ -10,7 +10,7 @@ function FormElementsComponent(props) {
 
     let formElements = []
     Object.keys(structure).forEach((key,idx) => {
-       if (structure[key].type == 'text') {
+        if (structure[key].type == 'text' || structure[key].type == 'date') {
            let item = (
                <Form.Group key={idx} className="mb-3" controlId="formBasicEmail">
                    <Form.Label>{key}</Form.Label>
@@ -20,7 +20,7 @@ function FormElementsComponent(props) {
                </Form.Group>
            )
             formElements.push(item)
-      }
+        }
         if (structure[key].type == 'list') {
             formElements.push(
                 <List key={idx} name={key} options={structure[key].options} correct={structure[key].correct} />

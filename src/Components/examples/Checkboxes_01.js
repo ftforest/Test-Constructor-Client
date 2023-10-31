@@ -21,7 +21,7 @@ class Checkboxes_01 extends React.Component {
     }
 
     render() {
-        console.log(this.childs,"this.childs")
+        
 
         return (
             <div>

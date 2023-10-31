@@ -41,7 +41,7 @@ export default function AnswerProvider({ children, globalStore }) {
     }
 
     function AnswerSave(el,update = false) {
-        console.log('AnswerSave')
+        
 
         if (update) {
             let data = answers.filter(item => item.id != el.id)
@@ -54,15 +54,15 @@ export default function AnswerProvider({ children, globalStore }) {
     }
 
     function AnswerEdit(id,addId,e) {
-        console.log('AnswerEdit')
-        console.log(id,'id')
+        
+        
 
         window.location.href = '/edit/' + NameElement + '/' + addId + '/' + id;
     }
 
     function AnswerDelete(id,e) {
-        console.log('AnswerDelete')
-        console.log(id,'id')
+        
+        
 
         let data = answers.filter(item => item.id != id);
         setAnswers(data);
@@ -70,8 +70,8 @@ export default function AnswerProvider({ children, globalStore }) {
     }
 
     function AnswerView(id,e) {
-        console.log('AnswerView')
-        console.log(id,'id')
+        
+        
 
         window.location.href = '/my-answers-page/view/'+id;
     }

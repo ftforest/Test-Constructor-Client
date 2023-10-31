@@ -59,7 +59,7 @@ function getIdForNewElement(nameParametr) {
     let newId = 0;
     storeGetParam(nameParametr).forEach((el,index,key) => {
         if (el.id >= newId) newId = el.id + 1;
-        console.log(el,index,key,newId)
+        
     })
     if (newId == 0) newId++;
     return newId;

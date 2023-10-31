@@ -27,9 +27,9 @@ function TableComponent(props) {
     const navigate = useNavigate();
 
     let table = props.datatable || []
-    const Edit = props.edit || null//((id,e) => console.log(id,'id = Edit'))
-    const View = props.view || null//((id,e) => console.log(id,'id = View'))
-    const Delete = props.delet || null//((id,e) => console.log(id,'id = Delete'))
+    const Edit = props.edit || null//((id,e) => )
+    const View = props.view || null//((id,e) => )
+    const Delete = props.delet || null//((id,e) => )
     const tableDom = []
     let lengthAllRow = 0
     if (table[0] != undefined) lengthAllRow = table[0].length

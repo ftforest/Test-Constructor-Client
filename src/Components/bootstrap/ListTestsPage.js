@@ -18,7 +18,7 @@ function ListTestsPage(props) {
     const fetchProtectedData = async () => {
         try {
             const response = await axiosInstance.get(`${baseURL}/tests/tests`);
-            console.log(response.data,"zzzzzzzz");
+            ;
             print(response.data,"xxxxxxxx");
             return response.data;
         } catch (error) {
@@ -28,8 +28,8 @@ function ListTestsPage(props) {
 
     useEffect(() => {
         let val = localStorage.getItem('getDataTable');
-        console.log(val,'val');
-        console.log(typeof val,'val');
+        ;
+        ;
         if (val == 'local_storage') {
             setTests(storeGetParam('tests'));
             setIsLoading(false);

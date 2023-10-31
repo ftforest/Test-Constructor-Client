@@ -8,7 +8,7 @@ export const useQuestions = () => useContext(QuestionContext);
 
 export default function QuestionProvider({ children, globalStore  }) {
     const NameElement = 'questions'
-    console.log(globalStore,'globalStore')
+    
     let questionsData = []
     if (globalStore == 'state') {
         questionsData = questionsDataJson
@@ -42,7 +42,7 @@ export default function QuestionProvider({ children, globalStore  }) {
     }
 
     function QuestionSave(el,update = false) {
-        console.log('QuestionSave')
+        
 
         if (update) {
             let data = questions.filter(item => item.id != el.id)
@@ -55,15 +55,15 @@ export default function QuestionProvider({ children, globalStore  }) {
     }
 
     function QuestionEdit(id,addId,e) {
-        console.log('QuestionEdit')
-        console.log(id,'id')
+        
+        
 
         window.location.href = '/edit/' + NameElement + '/' + addId + '/' + id;
     }
 
     function QuestionDelete(id,e) {
-        console.log('QuestionDelete')
-        console.log(id,'id')
+        
+        
 
         let data = questions.filter(item => item.id != id);
         setQuestions(data);
@@ -71,8 +71,8 @@ export default function QuestionProvider({ children, globalStore  }) {
     }
 
     function QuestionView(id,e) {
-        console.log('QuestionView')
-        console.log(id,'id')
+        
+        
 
         window.location.href = '/question/view/'+id;
     }

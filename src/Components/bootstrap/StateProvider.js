@@ -67,7 +67,7 @@ export function StateProvider({ children }) {
         } else if (question.type == "many_ans") {
             answer.correct = !answer.correct;
             let data = storeEditElement('answers',answer);
-            console.log(data)
+            
             setAnswers(data);
         }
     }
@@ -165,7 +165,7 @@ export function StateProvider({ children }) {
                 "email": login,
                 "password": password
             }
-            console.log(user_item,"user_item");
+            ;
             storeAddElement("users",user_item);
         }
         setStates({...states, ["login"]: true});
@@ -173,9 +173,9 @@ export function StateProvider({ children }) {
 
     const handleLogin = async (e,login,password,users_reg,localValue) => {
         e.preventDefault();
-        console.log(login,password,users_reg);
+        ;
         try {
-            console.log(`${baseURL}/auth/login`);
+            ;
             // /auth/login, POST
             const response = await axios.post(`${baseURL}/auth/login`, {
                 "email": "ftforest640@gmail.com",
@@ -185,7 +185,7 @@ export function StateProvider({ children }) {
             const token = response.data.token;
             // Сохраните токен в localStorage или состоянии приложения
             localStorage.setItem('token', token);
-            console.log(token,"token")
+            
             localStorage.setItem('getDataTable',localValue.toString());
             localStorage.setItem('access',true);
             setStates({...states, ["access"]: true});
@@ -198,7 +198,7 @@ export function StateProvider({ children }) {
     };
     const LoginApp = (e,login,password,users_reg,localValue) => {
         e.preventDefault();
-        console.log(login,password,users_reg);
+        ;
         let users_login = storeSaveReWtite('users',users_reg);
         //
         let user = storeGetElementsForParam("users","email",login);

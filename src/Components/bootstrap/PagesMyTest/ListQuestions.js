@@ -33,7 +33,7 @@ function ListQuestions(props) {
     const handleChange = (value) => {
         setNameTest(value)
     }
-    //console.log(array_questions)
+    //
     const handleDragStart = (e, index, question) => {
         e.dataTransfer.setData('index', index);
         print(index, 'index')

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {storeSetElementForParam} from "../../functions/storege";
 const RadioButtonsAnimalsAdaptive = (props) => {
-    console.log('answers',props.answers)
+    
     let answers = props.answers;
     let question = props.question;
 
@@ -13,7 +13,7 @@ const RadioButtonsAnimalsAdaptive = (props) => {
     };
 
     /*useEffect(() => {
-        console.log('RadioButtonsAnimalsAdaptive favorite')
+        
     }, [answer_id]);*/
 
     const list_answers_radio = answers.map((answer, idx) => {

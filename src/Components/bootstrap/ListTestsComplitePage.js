@@ -16,10 +16,10 @@ function ListTestsComplitePage(props) {
     let btnName = "Create test";
     const {updateTests} = useStates();
     const tests = storeGetParam('completed_tests');
-    console.log(tests,"tests");
+    ;
     const testTable = tests.map(item => {
         let test_title = storeGetElementsForParam("tests","id",item.test_id)[0].title;
-        console.log(test_title,"test_title");
+        ;
         let result = item.right + "/" + (parseInt(item.right) + parseInt(item.wrong))
         let date_now = new Date();
         let test_result = {

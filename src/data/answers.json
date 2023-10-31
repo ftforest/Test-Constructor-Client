@@ -32,25 +32,13 @@
   {
     "id": 6,
     "value": "Ответ 2 3",
-    "correct": false,
+    "correct": true,
     "question_id": 2
   },
   {
     "id": 7,
     "value": "Ответ 3 1",
     "correct": true,
-    "question_id": 3
-  },
-  {
-    "id": 8,
-    "value": "Ответ 3 2",
-    "correct": false,
-    "question_id": 3
-  },
-  {
-    "id": 9,
-    "value": "Ответ 3 3",
-    "correct": false,
     "question_id": 3
   },
   {

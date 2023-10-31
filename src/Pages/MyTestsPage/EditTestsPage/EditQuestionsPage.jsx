@@ -5,9 +5,9 @@ import {useParams} from "react-router";
 import {ViewObject} from "../../../functions/helpers";
 import TableComponent from "../../../Components/TableComponent/TableComponent";
 function EditTestsPage(props) {
-    console.log('EditTestsPage')
+    
     const { id } = useParams();
-    console.log(id,'id ')
+    
 
     const {TestGetId} = useTests();
     let testInfo = TestGetId(id)

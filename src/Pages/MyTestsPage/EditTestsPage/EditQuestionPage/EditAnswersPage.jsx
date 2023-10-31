@@ -6,9 +6,9 @@ import TableComponent from "../../../../Components/TableComponent/TableComponent
 import {useAnswers} from "../../../../hooks/answer-hook";
 
 function EditQuestionPage(props) {
-    console.log('EditQuestionPage')
+    
     const { id } = useParams();
-    console.log(id,'id ')
+    
 
     const {QuestionGetId} = useQuestions();
     let questionInfo = QuestionGetId(id)

@@ -21,7 +21,7 @@ class Reservation extends React.Component {
     }
 
     render() {
-        console.log(this.childs,"this.childs")
+        
 
         return (
             <div>

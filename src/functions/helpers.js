@@ -1,7 +1,7 @@
 import {storeGetParam, storeSaveReWtite} from "./storege";
 
 export function print(data,text = 'print') {
-    console.log(text+":",data);
+    ;
 }
 
 export function isObject(yourVariable) {
@@ -71,6 +71,6 @@ export function structureGetValue (objStructure) {
     Object.keys(objStructure).forEach((key,idx) => {
         obj[key] = objStructure[key].value
     })
-    console.log(obj,'obj')
+    
     return obj;
 }

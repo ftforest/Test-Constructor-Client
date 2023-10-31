@@ -37,7 +37,7 @@ function CardOneTest(props) {
     function handleOnChangeCheckBox(answer,question,event) {
         //event.target.checked = !event.target.checked;
         //event.preventDefault();
-        //console.log('handleOnChangeCheckBox',answer)
+        //
         //
         //
         //setIsCheckeds(!isCheckeds[answer.id].correct);

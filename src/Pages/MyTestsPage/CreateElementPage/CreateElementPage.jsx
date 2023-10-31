@@ -10,9 +10,9 @@ import FormElementsComponent from "../../../Components/FormElementsComponent/For
 
 function CreateElementPage(props) {
     const { name,additionalId, id } = useParams();
-    console.log(name,'name ')
-    console.log(additionalId,'additionalId ')
-    console.log(id,'id ')
+    
+    
+    
 
     const addId = additionalId || 0
     const nameEl = name || 'empty name'
@@ -60,9 +60,9 @@ function CreateElementPage(props) {
         event.preventDefault()
 
         const formData = new FormData(event.currentTarget)
-        console.log(formData,'formData')
+        
         const  formDataObj = Object.fromEntries(formData.entries())
-        console.log(formDataObj,'formDataObj')
+        
 
         if (id == undefined) {
             if (nameEl == 'tests') TestSave(formDataObj)

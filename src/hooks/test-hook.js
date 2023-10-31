@@ -8,7 +8,7 @@ export const useTests = () => useContext(TestContext);
 
 export default function TestProvider({ children, globalStore }) {
     const NameElement = 'tests'
-    console.log(globalStore,'globalStore')
+    
     let testsData = []
     if (globalStore == 'state') {
         testsData = testsDataJson
@@ -38,7 +38,7 @@ export default function TestProvider({ children, globalStore }) {
     }
 
     function TestSave(el,update = false) {
-        console.log('TestSave')
+        
 
         if (update) {
             let data = tests.filter(item => item.id != el.id)
@@ -51,15 +51,15 @@ export default function TestProvider({ children, globalStore }) {
     }
 
     function TestEdit(id,addId,e) {
-        console.log('TestEdit')
-        console.log(id,'id')
+        
+        
 
         window.location.href = '/edit/' + NameElement + '/' + addId + '/' + id;
     }
 
     function TestDelete(id,e) {
-        console.log('TestDelete')
-        console.log(id,'id')
+        
+        
 
         let data = tests.filter(item => item.id != id);
         setTests(data);
@@ -67,8 +67,8 @@ export default function TestProvider({ children, globalStore }) {
     }
 
     function TestView(id,e) {
-        console.log('TestView')
-        console.log(id,'id')
+        
+        
 
         window.location.href = '/test/view/'+id;
     }

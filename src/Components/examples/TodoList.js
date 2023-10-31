@@ -19,7 +19,7 @@ export default function TodoList() {
         const draggedIndex = parseInt(e.dataTransfer.getData('index'));
         const draggedTodo = todos[draggedIndex];
         const remainingTodos = todos.filter((todo, index) => index !== draggedIndex);
-        console.log(remainingTodos,'remainingTodos');
+        ;
         const newTodos = [
             ...remainingTodos.slice(0, index),
             draggedTodo,

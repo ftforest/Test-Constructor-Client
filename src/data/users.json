@@ -2,6 +2,7 @@
   {
     "id": 1,
     "email": "test@test.com",
-    "password": "123456"
+    "password": "123456",
+    "created_at": "2018-07-22"
   }
 ]

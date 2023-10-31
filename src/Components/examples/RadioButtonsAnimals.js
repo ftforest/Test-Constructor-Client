@@ -11,7 +11,7 @@ const RadioButtonsAnimals = () => {
     };
 
     useEffect(() => {
-        console.log('favorite')
+        
     }, [favorite]);
 
     return (

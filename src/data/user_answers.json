@@ -3,6 +3,24 @@
         "id": "1",
         "user_id": "1",
         "answer_id": "1",
-        "value": "1"
+        "value": "Ответ 1 1"
+    },
+    {
+        "id": "2",
+        "user_id": "1",
+        "answer_id": "4",
+        "value": "Ответ 2 1"
+    },
+    {
+        "id": "3",
+        "user_id": "1",
+        "answer_id": "6",
+        "value": "Ответ 2 3"
+    },
+    {
+        "id": "4",
+        "user_id": "1",
+        "answer_id": "7",
+        "value": "Ответ 3 1"
     }
 ]

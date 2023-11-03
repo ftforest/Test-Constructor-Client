@@ -13,6 +13,7 @@ import EditQuestionPage from "./Pages/MyTestsPage/EditTestsPage/EditQuestionPage
 import AnswerProvider from "./hooks/answer-hook";
 import CreateElementPage from "./Pages/MyTestsPage/CreateElementPage/CreateElementPage";
 import TestSolutionPage from "./Pages/TestSolutionPage/TestSolutionPage";
+import CompletedTestProvider from "./hooks/completed-test-hook";
 
 const Routery = () => {
     const storeType = ['state','storeg','redux']
@@ -26,10 +27,11 @@ const Routery = () => {
                     <Route path='create-test/:id' element={<CreateTest/>} errorElement={<ErrorPage/>}/>
 
                     <Route path='tests' element={<WrapProviders globalStore={globalStore}><MyTestsPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
-                    <Route path='complited-tests-page' element={<ComplitedTestsPage/>} errorElement={<ErrorPage/>}/>
+                    <Route path='complited-tests-page' element={<WrapProviders globalStore={globalStore}><ComplitedTestsPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
 
                     <Route path='test/view/:id' element={<WrapProviders globalStore={globalStore}><EditTestsPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
                     <Route path='question/view/:id' element={<WrapProviders globalStore={globalStore}><EditQuestionPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
+
                     <Route path='create/:name/:additionalId' element={<WrapProviders globalStore={globalStore}><CreateElementPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
                     <Route path='edit/:name/:additionalId/:id' element={<WrapProviders globalStore={globalStore}><CreateElementPage/></WrapProviders>} errorElement={<ErrorPage/>}/>
 
@@ -46,13 +48,15 @@ const Routery = () => {
 
 const WrapProviders = ({children,globalStore}) => {
     return (
-        <TestProvider globalStore={globalStore}>
-            <QuestionProvider globalStore={globalStore}>
-                <AnswerProvider globalStore={globalStore}>
-                    {children}
-                </AnswerProvider>
-            </QuestionProvider>
-        </TestProvider>
+        <CompletedTestProvider globalStore={globalStore}>
+            <TestProvider globalStore={globalStore}>
+                <QuestionProvider globalStore={globalStore}>
+                    <AnswerProvider globalStore={globalStore}>
+                        {children}
+                    </AnswerProvider>
+                </QuestionProvider>
+            </TestProvider>
+        </CompletedTestProvider>
     )
 }
 

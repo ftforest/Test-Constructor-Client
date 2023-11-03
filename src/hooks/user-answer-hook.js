@@ -23,12 +23,16 @@ export default function UserAnswerProvider({ children, globalStore }) {
             'value':'',
             'type':'text',
         },
-        'title': {
+        'user_id': {
+            'value':'addId',
+            'type':'text',
+        },
+        'answer_id': {
             'value':'',
             'type':'text',
         },
-        'author_id': {
-            'value':'addId',
+        'value': {
+            'value':'',
             'type':'text',
         },
         'created_at': {
@@ -38,8 +42,6 @@ export default function UserAnswerProvider({ children, globalStore }) {
     }
 
     function UserAnswerSave(el,update = false) {
-        
-
         if (update) {
             let data = userAnswers.filter(item => item.id != el.id)
             setUserAnswers([...data,el])
@@ -51,15 +53,10 @@ export default function UserAnswerProvider({ children, globalStore }) {
     }
 
     function UserAnswerEdit(id,addId,e) {
-        
-        
-
         window.location.href = '/edit/' + NameElement + '/' + addId + '/' + id;
     }
 
     function UserAnswerDelete(id,e) {
-        
-        
 
         let data = userAnswers.filter(item => item.id != id);
         setUserAnswers(data);
@@ -67,9 +64,6 @@ export default function UserAnswerProvider({ children, globalStore }) {
     }
 
     function UserAnswerView(id,e) {
-        
-        
-
         window.location.href = '/userAnswer/view/'+id;
     }
 

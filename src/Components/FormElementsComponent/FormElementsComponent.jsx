@@ -2,7 +2,7 @@ import React from 'react';
 import {Form} from "react-bootstrap";
 
 function FormElementsComponent(props) {
-    let id = props.id || 0
+    let id = props.id
     let addId = props.addId || 0
     let structure = props.structure || {}
     let dataObj = props.dataObj || {}
@@ -10,11 +10,11 @@ function FormElementsComponent(props) {
 
     let formElements = []
     Object.keys(structure).forEach((key,idx) => {
-        if (structure[key].type == 'text' || structure[key].type == 'date') {
+        if (structure[key].type == 'text' || structure[key].type == 'date' || structure[key].type == 'number' || structure[key].type == 'password') {
            let item = (
                <Form.Group key={idx} className="mb-3" controlId="formBasicEmail">
                    <Form.Label>{key}</Form.Label>
-                   <Form.Control type={structure[key].type} placeholder={key} name={key} readOnly={(id != undefined && key == 'id' ) || 'addId' == structure[key].value ? true : false}  defaultValue={key.match(/_id/) ? addId : dataObj[key]} />
+                   <Form.Control type={structure[key].type} placeholder={key} name={key} readOnly={(id != undefined && key == 'id' ) || ('addId' == structure[key].value) ? true : false}  defaultValue={key.match(/_id/) ? addId : dataObj[key]} />
                    <Form.Text className="text-muted">
                    </Form.Text>
                </Form.Group>

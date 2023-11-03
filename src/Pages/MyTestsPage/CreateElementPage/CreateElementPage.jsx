@@ -7,6 +7,7 @@ import {Col, Container, Form, Row,Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {structureGetValue, ViewObject} from "../../../functions/helpers";
 import FormElementsComponent from "../../../Components/FormElementsComponent/FormElementsComponent";
+import {useCompletedTests} from "../../../hooks/completed-test-hook";
 
 function CreateElementPage(props) {
     const { name,additionalId, id } = useParams();
@@ -23,6 +24,7 @@ function CreateElementPage(props) {
     let {structure:test,TestSave,tests:listTest,TestGetId} = useTests()
     let {structure:question,QuestionSave,questions:listQuestion,QuestionGetId} = useQuestions()
     let {structure:answer,AnswerSave,answers:listAnswer,AnswerGetId} = useAnswers()
+    let {structure:completedTest,CompletedTestsSave,completedTests:listCompletedTests,CompletedTestGetId} = useCompletedTests()
 
     let additionalData = props.additionalData
 
@@ -55,6 +57,12 @@ function CreateElementPage(props) {
         listDebugEl = listAnswer
         structure = answer
     }
+    if (nameEl == 'completedTests') {
+        if (id != undefined) dataObj = CompletedTestGetId(id)
+        else dataObj = structureGetValue(completedTest)
+        listDebugEl = listCompletedTests
+        structure = completedTest
+    }
 
     const Save = (event) =>  {
         event.preventDefault()
@@ -68,10 +76,12 @@ function CreateElementPage(props) {
             if (nameEl == 'tests') TestSave(formDataObj)
             if (nameEl == 'questions') QuestionSave(formDataObj)
             if (nameEl == 'answers') AnswerSave(formDataObj)
+            if (nameEl == 'completedTests') CompletedTestsSave(formDataObj)
         } else {
             if (nameEl == 'tests') TestSave(formDataObj,true)
             if (nameEl == 'questions') QuestionSave(formDataObj,true)
             if (nameEl == 'answers') AnswerSave(formDataObj,true)
+            if (nameEl == 'completedTests') CompletedTestsSave(formDataObj,true)
         }
     }
 

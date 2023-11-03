@@ -1,5 +1,5 @@
 import React, {createContext, useState, useContext, useEffect} from "react";
-import completedTestsDataJson from '../data/my-completedTests.json';
+import completedTestsDataJson from '../data/completed_test.json';
 import {storeGetParam, storeSaveReWtite} from "../functions/storege";
 import {getData} from "../functions/helpers";
 
@@ -23,16 +23,25 @@ export default function CompletedTestProvider({ children, globalStore }) {
             'value':'',
             'type':'text',
         },
-        'title': {
-            'value':'',
-            'type':'text',
-        },
-        'author_id': {
+        'user_id': {
             'value':'addId',
             'type':'text',
         },
+        'test_id': {
+            'value':'addId',
+            'type':'text',
+        },
+
+        'right': {
+            'value':'',
+            'type':'number',
+        },
+        'wrong': {
+            'value':'',
+            'type':'number',
+        },
         'created_at': {
-            'value':'2018-07-22',
+            'value':'',
             'type':'date',
         }
     }
@@ -51,9 +60,6 @@ export default function CompletedTestProvider({ children, globalStore }) {
     }
 
     function CompletedTestEdit(id,addId,e) {
-        
-        
-
         window.location.href = '/edit/' + NameElement + '/' + addId + '/' + id;
     }
 
